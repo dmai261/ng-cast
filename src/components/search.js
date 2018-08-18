@@ -15,8 +15,12 @@ angular.module('video-player')
         youTube.search(query, callback);
       };
 
-      this.result = () => {
-        let data = youTube.search(this.inputs, this.searchResults);
+      this.result = (videos) => {
+        if (this.searchResults) {
+          this.searchResults(videos);
+        } else {
+          console.log('booo this test');
+        }
       };
     }
   });
