@@ -3,24 +3,22 @@ angular.module('video-player')
   .component('search', {
     bindings: {
       result: '<',
-      searchResults: '<'
     },
     templateUrl: 'src/templates/search.html',
     controller: function (youTube) {
+      this.service = youTube;
       this.inputs = '';
-      // this.search = (inputs) => {
-      //   console.log(inputs);
-      // };
-      this.search = (query, callback) => {
-        youTube.search(query, callback);
-      };
-
-      this.result = (videos) => {
-        if (this.searchResults) {
-          this.searchResults(videos);
-        } else {
-          console.log('booo this test');
+      this.logger = () => {
+        console.log('enter');
+      }
+      this.onEnter = (event) => {
+        // console.log(event.key);
+        if(event.key === 'Enter') {
+          this.search();
         }
-      };
+      }
+      this.search = _.debounce(() => {
+        youTube.search(this.inputs, this.result);
+      }, 3000);
     }
   });

@@ -4,15 +4,15 @@ angular.module('video-player')
     bindings: {
       video: '<',
     },
-    template: '<div ng-include="$ctrl.getTemplateUrl()"></div>', 
+    templateUrl: 'src/templates/videoPlayer.html', 
     controller: function () {
-      // this.video = exampleVideoData[0];
-      this.getTemplateUrl = function() {
+      this.videoExist = function () {
         if (this.video) {
-          return 'src/templates/videoPlayer.html';
+          return true;
         }
-        return 'src/templates/pleaseWait.html';
-      };
+        return false;
+      }
+      
       this.videoUrl = function() {
         if (this.video) {
           return 'https://www.youtube.com/embed/' + this.video.id.videoId;
@@ -24,3 +24,5 @@ angular.module('video-player')
       };
     } 
   });
+
+// '<div ng-include="$ctrl.getTemplateUrl()"></div>'
