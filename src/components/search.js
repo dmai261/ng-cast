@@ -19,6 +19,6 @@ angular.module('video-player')
       }
       this.search = _.debounce(() => {
         youTube.search(this.inputs, this.result);
-      }, 3000);
+      }, 500);
     }
   });

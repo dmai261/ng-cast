@@ -9,7 +9,7 @@ angular.module('video-player')
           part: 'snippet',
           key: YOUTUBE_API_KEY,
           q: query,
-          maxResults: 5,
+          maxResults: 25,
           type: 'video'}
       }).then(function successCallback(response) {
         callback(response.data.items);

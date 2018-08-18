@@ -4,8 +4,13 @@ body {
   background: #f1f1f1;
 }
 
-.page {
-  color: red;
+.on {
+  background: #e5e6e6;
+}
+.pagination {
+  padding-left: 200px;
+  margin-bottom: 15px;
+  margin-top: 5px;
 }
 
 .navbar {

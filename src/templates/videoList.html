@@ -1,24 +1,47 @@
 <ul class="video-list">
   <ul class="pagination">
-    <li class='page'><a href="#">1</a></li>
-    <li class='page'><a href="#">2</a></li>
-    <li class='page'><a href="#">3</a></li>
-    <li class='page'><a href="#">4</a></li>
-    <li class='page'><a href="#">5</a></li>
+    <li class='page'><a class="page-link" href="#"><<</a></li>
+    <li class='page'><a ng-click="$ctrl.setPage(0)" ng-class="$ctrl.activeSelector(0)" href="#">1</a></li>
+    <li class='page'><a ng-click="$ctrl.setPage(1)" ng-class="$ctrl.activeSelector(1)" href="#">2</a></li>
+    <li class='page'><a ng-click="$ctrl.setPage(2)" ng-class="$ctrl.activeSelector(2)" href="#">3</a></li>
+    <li class='page'><a ng-click="$ctrl.setPage(3)" ng-class="$ctrl.activeSelector(3)" href="#">4</a></li>
+    <li class='page'><a ng-click="$ctrl.setPage(4)" ng-class="$ctrl.activeSelector(4)" href="#">5</a></li>
+    <li class='page'><a class="page-link" href="#">>></a></li>
   </ul>
+  <hr class='hr-tag'>
+  <div ng-repeat="videoPage in $ctrl.videos track by $index">
   <video-list-entry 
-    ng-repeat="video in $ctrl.videos" 
-    video='video'
-    on-click="$ctrl.onClick"
-  />
+      ng-repeat="video in $ctrl.videos[$index]"
+      video='video'
+      on-click="$ctrl.onClick"
+      ng-if="$ctrl.currentPage===$index"
+    /></video-list-entry>
+    </div>
 </ul>
 
 
 
+<!-- 
+  <video-list-entry 
+    ng-repeat="video in $ctrl.videos[0]" 
+    video='video'
+    on-click="$ctrl.onClick"
+    ng-if="$ctrl.currentPage===1"
+  /></video-list-entry>
+  <div>NEWLIST</div>
+  <video-list-entry 
+    ng-repeat="video in $ctrl.videos[1]" 
+    video='video'
+    on-click="$ctrl.onClick"
+  /></video-list-entry>
+  <div>NEWLIST</div>
+  <video-list-entry 
+    ng-repeat="video in $ctrl.videos[2]" 
+    video='video'
+    on-click="$ctrl.onClick"
+  /></video-list-entry>
 
-
-
-
+ -->
 
 
 

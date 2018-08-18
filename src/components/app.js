@@ -3,12 +3,13 @@ angular.module('video-player')
   .component('app', {
     templateUrl: 'src/templates/app.html',
     controller: function(youTube) {
-      this.videos = exampleVideoData;
-      this.currentVideo = exampleVideoData[0];
-      
-      this.searchResults = (videos) => {
-        if(videos) {
-          this.currentVideo = videos[0];
+      this.searchResults = (data) => {
+        if(data) {
+          let videos = [];
+          for(let i = 0; i < data.length; i += 5) {
+            videos.push(data.slice(i, i + 5));
+          }
+          this.currentVideo = videos[0][0];
           this.videos = videos;
         }
       };
@@ -16,6 +17,6 @@ angular.module('video-player')
       this.selectVideo = (title) => {
         this.currentVideo = title;
       };
-      youTube.search('anything', this.searchResults);
+      youTube.search('fortnite', this.searchResults);
     }
   });
